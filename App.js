@@ -9,9 +9,10 @@ import { Platform, StyleSheet, Text, View } from 'react-native'
 import Index from './src/components/index'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
-import store from './src/redux/reducers/store'
+import store from './src/redux'
 
 const App = () => {
+  console.log(store)
   return (
     <Provider store={store}>
       <Index />

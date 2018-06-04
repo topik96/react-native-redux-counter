@@ -1,18 +1,25 @@
 import React from 'react'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { TouchableOpacity, View, Text, TextInput } from 'react-native'
 import styles from './style'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../redux/actions/counter'
+import * as actions from '../redux/actions'
 
 class Index extends React.Component {
   render() {
-    console.log(this.props.count)
     return (
       <View style={styles.container}>
+        <Text>{this.props.sayHello}</Text>
+        <TextInput
+          onChangeText={value => {
+            this.props.setCounter(value)
+          }}
+          placeholder="masukan angka"
+        />
         <TouchableOpacity
           onPress={() => {
-            this.props.increment()
+            this.props.incrementCounter()
+            this.props.tapUP()
           }}>
           <Text>Tambah</Text>
         </TouchableOpacity>
@@ -20,6 +27,7 @@ class Index extends React.Component {
         <TouchableOpacity
           onPress={() => {
             this.props.decrementCounter()
+            this.props.tapDOWN()
           }}>
           <Text>Kurang</Text>
         </TouchableOpacity>
@@ -30,7 +38,8 @@ class Index extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.count,
+    sayHello: state.hello
   }
 }
 
