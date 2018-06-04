@@ -1,0 +1,3 @@
+rootProject.name = 'learnMajid'
+
+include ':app'
